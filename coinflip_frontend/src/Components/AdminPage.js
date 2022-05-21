@@ -36,7 +36,7 @@ const AdminPage = ({wallet, setWallet}) => {
     return(
         <div className="w-100 bg-wh">
             <div className="mx-w-1100 m-rl-auto pd-30 flex-col">
-                <div className="m-rl-auto bg-lgr pd-30 min-h-4 content-center dashed-border border-cl-gr m-t-3">
+                <div className="m-rl-auto bg-lgr pd-30 min-h-4 min-w-400 content-center dashed-border border-cl-gr m-t-3">
                     <div className="flex-row ">
                         <div>
                             Admin Balance : {adminBalance}  
