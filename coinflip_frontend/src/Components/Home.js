@@ -72,7 +72,7 @@ const Home = ({wallet, setWallet}) => {
                     <div className="m-rl-auto">
                         <WalletConnector wallet={wallet} setWallet={setWallet}/>
                     </div>
-                    <div className="m-rl-auto">
+                    <div className="m-rl-auto bg-lgr pd-30 min-h-4 content-center dashed-border border-cl-gr">
                         <div className="flex-row">
                             <div>
                                 Balance : {balance}  

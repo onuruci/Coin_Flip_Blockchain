@@ -93,6 +93,10 @@
     background-color: aqua;
 }
 
+.bg-lgr {
+    background-color: rgb(156, 202, 135);
+}
+
 .bg-or{
     background-color: rgb(241, 217, 189);
 }
@@ -120,4 +124,8 @@
     border-width: 0.2rem;
     border-radius: 1rem;
     border-color: rgb(240, 118, 19);
+}
+
+.border-cl-gr {
+    border-color: rgb(5, 90, 5);
 }

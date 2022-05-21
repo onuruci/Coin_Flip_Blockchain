@@ -36,18 +36,20 @@ const AdminPage = ({wallet, setWallet}) => {
     return(
         <div className="w-100 bg-wh">
             <div className="mx-w-1100 m-rl-auto pd-30 flex-col">
-                <div className="flex-row">
-                    <div>
-                        Admin Balance : {adminBalance}  
+                <div className="m-rl-auto bg-lgr pd-30 min-h-4 content-center dashed-border border-cl-gr m-t-3">
+                    <div className="flex-row ">
+                        <div>
+                            Admin Balance : {adminBalance}  
+                        </div>
+                        <div>
+                            <img src={etherlogo} alt="" srcset="" className="ether-logo"/>
+                        </div>
                     </div>
                     <div>
-                        <img src={etherlogo} alt="" srcset="" className="ether-logo"/>
+                        <button onClick={() => handleWithdraw()}>Withdraw Balance</button>
                     </div>
                 </div>
-                <div>
-                    <button onClick={() => handleWithdraw()}>Withdraw Balance</button>
-                </div>
-                <div>
+                <div className="m-rl-auto m-t-3">
                     <WalletConnector wallet={wallet} setWallet={setWallet}/>
                 </div>
             </div>
