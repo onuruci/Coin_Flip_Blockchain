@@ -7,6 +7,8 @@ import BalanceController from "./BalanceController";
 import '../styles/styles.css';
 import luckirish from '../styles/images/luckirish.png';
 import etherlogo from '../styles/images/ether.png';
+import headimg from '../styles/images/head.png';
+import tailsimg from '../styles/images/tails.png';
 import { coinFlipContract, getPlayerBalance , play} from "../util/interact";
 
 require('dotenv').config();
@@ -15,9 +17,10 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(REACT_APP_ALCHEMY_KEY);
 
 const Home = ({wallet, setWallet}) => {
-    const [guess, setGuess] =  useState(-1);
+    const [guess, setGuess] =  useState(1);
     const [gameStatus, setGameStatus] = useState("");
-    const [balance, setBalance] = useState(0);
+    const [balance, setBalance] = useState(1);
+    const [spining, setSpinning] = useState(false);
 
     useEffect(() => {
         const playerBalanceReq = async () => {
@@ -36,17 +39,19 @@ const Home = ({wallet, setWallet}) => {
 
     useEffect(() => {
         addSmartContractListener();
-    }, []);
+    }, [balance]);
 
     const playGame = async () => {
-        const res = await play(wallet,  web3.utils.toWei((1).toString(), 'ether'), guess);
+        const res = await play(wallet,  web3.utils.toWei((1).toString(), 'ether'), guess, setSpinning);
         console.log(res);
     };
 
     function addSmartContractListener() {
         coinFlipContract.events.balanceChanged({}, (error, data) => {
+            console.log('Curr balance:   ', balance);
           if (error) {
             setGameStatus("😥 " + error.message);
+            setSpinning(false);
           } else {
             console.log(data);
             let newB = parseFloat(web3.utils.fromWei(data.returnValues[1].toString(), 'ether')).toFixed(4);
@@ -57,6 +62,7 @@ const Home = ({wallet, setWallet}) => {
                 setGameStatus("You lost");
             };
             setBalance(newB);
+            setSpinning(false);
           }
         });
     };
@@ -99,9 +105,17 @@ const Home = ({wallet, setWallet}) => {
                     <div>
                         <button onClick={() => playGame()}>Play</button>
                     </div>
+                </div>
+                <div className="m-rl-auto">
+                <div className="coin" style={spining ? {"animation" : "spin-heads 3s forwards infinite"} : null} id="coin">
+                    <div className="heads">
+                        <img src={headimg}/>
                     </div>
-                <div>
-                    {gameStatus}
+                    <div className="tails">
+                        <img src={tailsimg}/>
+                    </div>
+                </div>
+                        {gameStatus}
                 </div>
             </div>
         </div>

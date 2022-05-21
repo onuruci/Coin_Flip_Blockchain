@@ -89,7 +89,7 @@ export const withdrawAdminBalance = async (address) => {
     }
 };
 
-export const play = async (address, value, guess) => {
+export const play = async (address, value, guess, setSpinning) => {
   const transactionParameters = {
       to: CONTRACT_ADDRESS,
       from: address,
@@ -97,6 +97,7 @@ export const play = async (address, value, guess) => {
       data: coinFlipContract.methods.play(guess, value).encodeABI(),
   };
   try {
+      setSpinning(true);
       const txHash = await window.ethereum.request({
           method: "eth_sendTransaction",
           params: [transactionParameters],
@@ -106,6 +107,7 @@ export const play = async (address, value, guess) => {
           status: " Once the transaction is verified by the network, the message will be updated automatically.",
       };
       } catch (error) {
+        setSpinning(false);
       return {
           status: "😥 " + error.message,
       };
