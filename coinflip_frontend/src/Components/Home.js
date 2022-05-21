@@ -75,7 +75,7 @@ const Home = ({wallet, setWallet}) => {
                         Balance : {balance}  
                     </div>
                     <div>
-                        <img src={etherlogo} alt="" srcset="" className="ether-logo"/>
+                        <img src={etherlogo} alt="" className="ether-logo"/>
                     </div>
                 </div>
                 <div>

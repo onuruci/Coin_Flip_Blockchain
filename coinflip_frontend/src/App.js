@@ -8,6 +8,7 @@ import {
 
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home";
+import AdminPage from "./Components/AdminPage";
 
 import './styles/styles.css';
 
@@ -20,7 +21,7 @@ function App() {
         <Navbar/>
         <Routes>
           <Route path="/" element={<Home wallet={wallet} setWallet={setWallet}/>} />
-          <Route path="admin" element={<div>Admin</div>}/>
+          <Route path="admin" element={<AdminPage wallet={wallet} setWallet={setWallet}/>}/>
         </Routes>
       </BrowserRouter>
     </div>

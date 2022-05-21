@@ -86,7 +86,7 @@ contract CoinFlip is Ownable {
 
     // Withdrawal functions
 
-    function withdrawPlayerBalance(bool _all, uint _amount) public payable {
+    function withdrawPlayerBalance(bool _all, uint _amount) public {
         require(balance[msg.sender] > 0);
         if(_all){
             require(address(this).balance - houseBalance >= balance[msg.sender], "We don't have enough ether to pay you back :). This will be fixed in short time.");
@@ -101,7 +101,7 @@ contract CoinFlip is Ownable {
     }
 
 
-    function withdrawHouseBalance() public onlyOwner payable {
+    function withdrawHouseBalance() public onlyOwner {
         houseHolder.transfer(houseBalance);
         houseBalance = 0;
     }

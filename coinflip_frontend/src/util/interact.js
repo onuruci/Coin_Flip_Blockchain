@@ -3,7 +3,7 @@ const { REACT_APP_ALCHEMY_KEY  } = process.env;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(REACT_APP_ALCHEMY_KEY);
 const contractABI = require("../contract-abi.json");
-const CONTRACT_ADDRESS = "0x2Ed73d315938E8bf9F005b0da0F5b655E0Cd1f9C";
+const CONTRACT_ADDRESS = "0xf52A3D308D69bf13BF69027D738731cF517cfD6c";
 
 
 export const coinFlipContract = new web3.eth.Contract(
@@ -19,6 +19,16 @@ export const getPlayerBalance = async (address) => {
         _status : "Succesfull connection"
     }
 };
+
+export const getAdminBalance = async (address) => {
+  const balance = await coinFlipContract.methods.getContractBalance().call({from : address});
+    console.log("Balance:  ", balance);
+    return {
+        _balance : balance,
+        _status : "Succesfull connection"
+    }
+};
+
 
 
 const transactionSender = async (transactionParameters) => {
@@ -62,26 +72,21 @@ export const addBalance = async (address, value) => {
 };
 
 export const withdrawPlayerBalance = async (address, value, all) => {
-  const transactionParameters = {
-      to: CONTRACT_ADDRESS,
-      from: address,
-      value: 0,
-      data: coinFlipContract.methods.withdrawPlayerBalance(all, value).encodeABI(),
-  };
-  try {
-      const txHash = await window.ethereum.request({
-          method: "eth_sendTransaction",
-          params: [transactionParameters],
-      });
-      console.log(txHash);
-      return {
-          status: " Once the transaction is verified by the network, the message will be updated automatically.",
-      };
-      } catch (error) {
-      return {
-          status: "😥 " + error.message,
-      };
-      }
+  const balance = await coinFlipContract.methods.withdrawPlayerBalance(all, value).send({from : address});
+    console.log("Balance:  ", balance);
+    return {
+        _balance : balance,
+        _status : "Succesfull connection"
+    }
+};
+
+export const withdrawAdminBalance = async (address) => {
+  const balance = await coinFlipContract.methods.withdrawHouseBalance().send({from : address});
+    console.log("Balance:  ", balance);
+    return {
+        _balance : balance,
+        _status : "Succesfull connection"
+    }
 };
 
 export const play = async (address, value, guess) => {

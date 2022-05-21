@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/alsar/Documents/GitHub/Coin_Flip_Blockchain/contractdev/contracts/CoinFlip.sol": {
-      "lastModificationDate": 1652698174018,
-      "contentHash": "61309a5ca492265d93e4f26a38813e5f",
+      "lastModificationDate": 1653131786977,
+      "contentHash": "6157f2265849186e604713fd27b92b9e",
       "sourceName": "contracts/CoinFlip.sol",
       "solcConfig": {
         "version": "0.8.0",
