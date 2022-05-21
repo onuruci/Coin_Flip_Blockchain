@@ -84,3 +84,7 @@
 .ether-logo {
     max-width: 1rem;
 }
+
+.link-text {
+    text-decoration: none;
+}

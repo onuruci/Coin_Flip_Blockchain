@@ -7,7 +7,7 @@ import BalanceController from "./BalanceController";
 import '../styles/styles.css';
 import luckirish from '../styles/images/luckirish.png';
 import etherlogo from '../styles/images/ether.png';
-import { getPlayerBalance , play} from "../util/interact";
+import { coinFlipContract, getPlayerBalance , play} from "../util/interact";
 
 require('dotenv').config();
 const { REACT_APP_ALCHEMY_KEY  } = process.env;
@@ -34,10 +34,32 @@ const Home = ({wallet, setWallet}) => {
         };
     }, [wallet]);
 
+    useEffect(() => {
+        addSmartContractListener();
+    }, []);
+
     const playGame = async () => {
         const res = await play(wallet,  web3.utils.toWei((1).toString(), 'ether'), guess);
         console.log(res);
-    }
+    };
+
+    function addSmartContractListener() {
+        coinFlipContract.events.balanceChanged({}, (error, data) => {
+          if (error) {
+            setGameStatus("😥 " + error.message);
+          } else {
+            console.log(data);
+            let newB = parseFloat(web3.utils.fromWei(data.returnValues[1].toString(), 'ether')).toFixed(4);
+            console.log(newB, '    ', balance);
+            if(newB > balance) {
+                setGameStatus("You won !");
+            } else if(newB < balance) {
+                setGameStatus("You lost");
+            };
+            setBalance(newB);
+          }
+        });
+    };
 
 
     return(
@@ -67,6 +89,9 @@ const Home = ({wallet, setWallet}) => {
                 </div>
                 <div>
                     <button onClick={() => playGame()}>Play</button>
+                </div>
+                <div>
+                    {gameStatus}
                 </div>
             </div>
         </div>
