@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState,  useEffect } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+import Navbar from "./Components/Navbar";
+import Home from "./Components/Home";
+
+import './styles/styles.css';
 
 function App() {
+  const [wallet, setWallet] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-100 bg-gr app">
+      <BrowserRouter>
+        <Navbar/>
+        <Routes>
+          <Route path="/" element={<Home wallet={wallet} setWallet={setWallet}/>} />
+          <Route path="admin" element={<div>Admin</div>}/>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

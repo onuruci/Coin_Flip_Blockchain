@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+.app {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+}
+
+.w-100{
+    width: 100%;
+}
+
+.mx-w-1100{
+    max-width: 1100px;
+}
+
+.m-rl-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.m-l-auto {
+    margin-left: auto;
+}
+
+.m-rl-2{
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.header-font {
+    font-size: 3rem;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.pd-10{
+    padding: 10px;
+}
+
+.pd-20{
+    padding: 20px;
+}
+
+.pd-30 {
+    padding: 30px;
+}
+
+.pd-t-60{
+    padding-top: 50px;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-gr{
+    background-color: rgb(39, 174, 96);
+}
+
+.bg-gl {
+    background-color: rgb(254, 206, 31);
+}
+
+.bg-wh{
+    background-color: rgb(255, 255, 255);
+}
+
+.logo-container {
+    max-width: 9rem;
+    cursor: pointer;
+}
+
+.luck-irish-container {
+    max-width: 40rem;
+    margin-top: 3rem;
+}
+
+.ether-logo {
+    max-width: 1rem;
+}
