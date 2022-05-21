@@ -13,6 +13,14 @@
     max-width: 1100px;
 }
 
+.min-w-400 {
+    width: 600px;
+}
+
+.min-h-4{
+    min-height: 4rem;
+}
+
 .m-rl-auto {
     margin-left: auto;
     margin-right: auto;
@@ -25,6 +33,10 @@
 .m-rl-2{
     margin-left: 2rem;
     margin-right: 2rem;
+}
+
+.m-t-3{
+    margin-top: 3rem;
 }
 
 .header-font {
@@ -49,6 +61,12 @@
     padding-top: 50px;
 }
 
+.content-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .flex-row {
     display: flex;
     flex-direction: row;
@@ -71,6 +89,14 @@
     background-color: rgb(255, 255, 255);
 }
 
+.bg-bl{
+    background-color: aqua;
+}
+
+.bg-or{
+    background-color: rgb(241, 217, 189);
+}
+
 .logo-container {
     max-width: 9rem;
     cursor: pointer;
@@ -87,4 +113,11 @@
 
 .link-text {
     text-decoration: none;
+}
+
+.dashed-border {
+    border-style: dashed;
+    border-width: 0.2rem;
+    border-radius: 1rem;
+    border-color: rgb(240, 118, 19);
 }

@@ -68,28 +68,38 @@ const Home = ({wallet, setWallet}) => {
                 <div className="m-rl-auto">
                     <img src={luckirish} alt="" className="luck-irish-container"/>
                 </div>
-                <WalletConnector wallet={wallet} setWallet={setWallet}/>
-                {wallet !== "" ? <BalanceController balance={balance} setBalance={setBalance} wallet={wallet}/> : null}
-                <div className="flex-row">
+                <div className="flex-row m-t-3">
+                    <div className="m-rl-auto">
+                        <WalletConnector wallet={wallet} setWallet={setWallet}/>
+                    </div>
+                    <div className="m-rl-auto">
+                        <div className="flex-row">
+                            <div>
+                                Balance : {balance}  
+                            </div>
+                            <div>
+                                <img src={etherlogo} alt="" className="ether-logo"/>
+                            </div>
+                        </div>
+                        <div>
+                            {wallet !== "" ? <BalanceController balance={balance} setBalance={setBalance} wallet={wallet}/> : null}
+                        </div>
+                    </div>
+                </div>
+                <div className="m-rl-auto">
                     <div>
-                        Balance : {balance}  
+                        Your choice: {
+                            guess ? "Head" : "Tails"
+                        }
                     </div>
                     <div>
-                        <img src={etherlogo} alt="" className="ether-logo"/>
+                        <button onClick={() => setGuess(1)}>Head</button>
+                        <button onClick={() => setGuess(0)}>Tail</button>
                     </div>
-                </div>
-                <div>
-                    Your choice: {
-                        guess ? "Head" : "Tails"
-                    }
-                </div>
-                <div>
-                    <button onClick={() => setGuess(1)}>Head</button>
-                    <button onClick={() => setGuess(0)}>Tail</button>
-                </div>
-                <div>
-                    <button onClick={() => playGame()}>Play</button>
-                </div>
+                    <div>
+                        <button onClick={() => playGame()}>Play</button>
+                    </div>
+                    </div>
                 <div>
                     {gameStatus}
                 </div>

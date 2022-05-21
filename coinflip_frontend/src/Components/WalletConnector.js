@@ -6,6 +6,8 @@ import {
     connectWallet
   } from "../util/interact";
 
+import '../styles/styles.css'
+
 const WalletConnector = ({wallet, setWallet}) => {
     const [status, setStatus] = useState('');
 
@@ -26,7 +28,7 @@ const WalletConnector = ({wallet, setWallet}) => {
     };
 
     return(
-        <div>
+        <div className="bg-or pd-30 min-w-400 min-h-4 content-center dashed-border">
             <div>
                 {status}
             </div>
